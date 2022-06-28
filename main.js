@@ -24,9 +24,9 @@ source.setAttribute(`src`, audioUrl)
 source.setAttribute(`type`, `audio/mpeg`) 
 audio.append(source)
 let h3 = document.createElement(`h3`)
-h3.innerText = name.toUpperCase()
+h3.innerText = name
 let img = document.createElement(`img`)
-img.setAttribute(`src`, imgUrl)
+img.setAttribute(`src`, imgUrl) 
 img.setAttribute(`class`, `roster-img`)
 let position = document.querySelector(`#pokemon-${userRoster.length + 1}`)
 position.addEventListener(`click`, () => {
@@ -41,25 +41,37 @@ userRoster.push(num)
 // set the HTML element values
 // append HTML element to the DOM
 
-pokemon.map((element, index) => { // index is a counter variable
-console.log(element) //fragile code
-let imgUrl = `https://assets.pokemon.com/assets/cms2/img/pokedex/full/${element.id}.png`
+const createPokemon = (pokemonName, imgUrl) => {
 let div = document.createElement(`div`) 
 let h3 = document.createElement(`h3`)
-h3.innerText = element.name
+h3.innerText = pokemonName
 div.setAttribute(`class`, `pokemon-card`)
 let img = document.createElement(`img`) 
-let audioUrl = `https://play.pokemonshowdown.com/audio/cries/${element.name.toLowerCase()}.mp3`
+let audioUrl = `https://play.pokemonshowdown.com/audio/cries/${pokemonName.toLowerCase()}.mp3`
 let audio = document.createElement(`audio`)
 let source = document.createElement(`source`)
 source.setAttribute(`src`, audioUrl)
 source.setAttribute(`type`, `audio/mpeg`) //what type of audioo to use
 audio.append(source)
 div.addEventListener(`click`, () => {
- console.log(`audio`, audioUrl)
+ div.classList.add(`animate__animated`)
+ div.classList.add(`animate__shakeX`)
+ setTimeout(() => {
+  div.classList.remove(`animate__animated`)
+  div.classList.remove(`animate__shakeX`)
+ }, 1300)
  audio.play()
 })
 img.src = imgUrl
-div.append(img, h3) 
-containerDiv.append(div)
+div.append(img, h3, audio) 
+return div;
+}
+
+pokemon.map((element, index) => { // index is a counter variable
+console.log(element) //fragile code
+let imgUrl = `https://assets.pokemon.com/assets/cms2/img/pokedex/full/${element.id}.png`
+const pokemonElement = createPokemon(element.name, imgUrl)
+containerDiv.append(pokemonElement)
 })
+
+
