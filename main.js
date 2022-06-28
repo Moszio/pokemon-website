@@ -1,5 +1,5 @@
 const pokemon = [`charmander`, `bulbasaur`, `squirtle`]
-const pokemonIDs = [`001`, `005`, `007`]
+const pokemonIDs = [`001`, `002`, `003`]
 const containerDiv = document.querySelector(`#container`)
 
 // loop over every ID 
@@ -14,7 +14,7 @@ let div = document.createElement(`div`)
 div.setAttribute(`class`, `pokemon-card`)
 let img = document.createElement(`img`) 
 img.src = imgUrl
-div.append(img)
+div.append(img) 
 document.body.append(div)
 containerDiv.append(div)
 })
