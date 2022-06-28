@@ -17,6 +17,7 @@ body {
  border-radius: 10px;
  background-color: #fff;
  transition: transform 0.5s;
+ cursor: pointer;
 }
 
 .pokemon-card > img {
@@ -26,7 +27,6 @@ body {
 
 #container {
  display: flex;
- justify-content: center;
+ justify-content: center; 
  gap: 1%;
- cursor: pointer;
 }

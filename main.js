@@ -1,5 +1,9 @@
-const pokemon = [`charmander`, `bulbasaur`, `squirtle`]
-const pokemonIDs = [`001`, `002`, `003`]
+const pokemon = [
+ {name: `Bulbasaur`, id: `001`},
+ {name: `Charmander`, id: `004`},
+ {name: `Squirtle`, id: `007`},
+] // array of objects obj,key,value
+
 const containerDiv = document.querySelector(`#container`)
 
 // loop over every ID 
@@ -7,14 +11,15 @@ const containerDiv = document.querySelector(`#container`)
 // set the HTML element values
 // append HTML element to the DOM
 
-pokemonIDs.map((id) => {
-let imgUrl = `https://assets.pokemon.com/assets/cms2/img/pokedex/full/${id}.png`
-console.log(`img url`, imgUrl)
+pokemon.map((element, index) => { // index is a counter variable
+ console.log(element) //fragile code
+let imgUrl = `https://assets.pokemon.com/assets/cms2/img/pokedex/full/${element.id}.png`
 let div = document.createElement(`div`) 
+let h3 = document.createElement(`h3`)
+h3.innerText = element.name
 div.setAttribute(`class`, `pokemon-card`)
 let img = document.createElement(`img`) 
 img.src = imgUrl
-div.append(img) 
-document.body.append(div)
+div.append(img, h3) 
 containerDiv.append(div)
 })
