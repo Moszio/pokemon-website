@@ -41,18 +41,34 @@ newBtn.addEventListener(`click`, async () => {
   let img = document.createElement(`img`)
   img.setAttribute(`src`, imgUrl)
   img.setAttribute(`class`, `roster-img`)
+  let btn = document.createElement(`button`)
+  btn.innerText = `Delete`
+  let items = (img)
+  btn.addEventListener(`click`, () => items.remove())
+  removeBtn.addEventListener(`click`, () => position.remove())
   let position = document.querySelector(`#pokemon-${userRoster.length + 1}`)
   position.addEventListener(`click`, () => {
   audio.play()
   })
-  position.append(img, h3, audio)
+  position.append(img, h3,)
+  h3.append(btn)
   userRoster.push(num)
 }
 })
 
-removeBtn.addEventListener(`click`, function() {
 
- })
+/*function() {
+  if(userRoster === 0) {
+    console.log(alert(`There is nothing to delet!`))
+  } else {
+      let length = userRoster
+    let grab = userRoster.querySelector(`pokemon-${length}`)
+    
+  }
+
+ })*/
+
+
 // loop over every ID 
 // create an HTML element
 // set the HTML element values
